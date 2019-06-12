@@ -42,6 +42,9 @@ else{
 
      $("#enviar").click(function() {
         const texto = $("#message").val();
+        if(!texto){
+          return;
+        }
         socket.emit('sendmessage', {
           newconnection : false,
           user: usuario,
@@ -54,3 +57,19 @@ else{
         $("#chat").append(data + '</br>')
      });
     }
+
+    $('#message').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        const texto = $("#message").val();
+        if(!texto){
+          return;
+        }
+        io.connect().emit('sendmessage', {
+          newconnection : false,
+          user: usuario,
+          message : `${usuario}: ${texto}`
+        });
+        $("#message").val('');
+      }
+  });
