@@ -3,4 +3,4 @@ RandomChat is a plataform that allows you to talk to different people without re
 
 ## Tools
 - BackEnd : Node.js
-- FrontEnd : React
+- FrontEnd : React (someday)
